@@ -11,7 +11,6 @@ import sv.edu.unab.gestionresiduos.repositories.RecyclableRepository;
 import sv.edu.unab.gestionresiduos.repositories.RecyclingRepository;
 import sv.edu.unab.gestionresiduos.repositories.UserRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
