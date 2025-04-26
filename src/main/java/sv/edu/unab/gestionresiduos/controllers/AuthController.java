@@ -40,6 +40,7 @@ public class AuthController {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         return AuthResponseDto.builder()
+                .id(user.getId())
                 .token(token)
                 .name(user.getName())
                 .email(user.getEmail())

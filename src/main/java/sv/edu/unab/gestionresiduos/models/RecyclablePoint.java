@@ -2,11 +2,13 @@ package sv.edu.unab.gestionresiduos.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "recyclable_points")
-public class RecyclablePoint {
+@EqualsAndHashCode(callSuper = true)
+public class RecyclablePoint extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

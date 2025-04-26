@@ -3,13 +3,15 @@ package sv.edu.unab.gestionresiduos.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-public class User {
+@EqualsAndHashCode(callSuper = true)
+public class User extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

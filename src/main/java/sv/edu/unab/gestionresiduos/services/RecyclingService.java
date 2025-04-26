@@ -48,7 +48,6 @@ public class RecyclingService {
     public Recycling createRecyclingWithDetails(RecyclingRequestDto request) {
         Recycling recycling = new Recycling();
         recycling.setDescription(request.getDescription());
-        recycling.setRecyclingDate(LocalDateTime.now());
 
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));

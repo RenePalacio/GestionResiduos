@@ -2,6 +2,7 @@ package sv.edu.unab.gestionresiduos.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "recyclings")
-public class Recycling {
+@EqualsAndHashCode(callSuper = true)
+public class Recycling extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +29,6 @@ public class Recycling {
     @ManyToOne
     @JoinColumn(name = "recyclable_point_id")
     private RecyclablePoint recyclablePoint;
-
-    @Column(name = "recycling_date", nullable = false)
-    private LocalDateTime recyclingDate;
 
     @OneToMany(mappedBy = "recycling", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecyclingDetail> details = new ArrayList<>();
