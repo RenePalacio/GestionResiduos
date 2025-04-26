@@ -1,6 +1,7 @@
 package sv.edu.unab.gestionresiduos.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,6 +19,7 @@ public class RecyclingDetail extends Auditable{
 
     @ManyToOne
     @JoinColumn(name = "recycling_id", nullable = false)
+    @JsonBackReference
     private Recycling recycling;
 
     @ManyToOne

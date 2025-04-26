@@ -1,5 +1,6 @@
 package sv.edu.unab.gestionresiduos.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,6 +32,7 @@ public class Recycling extends Auditable {
     private RecyclablePoint recyclablePoint;
 
     @OneToMany(mappedBy = "recycling", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<RecyclingDetail> details = new ArrayList<>();
 
 }
