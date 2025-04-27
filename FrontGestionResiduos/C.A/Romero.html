@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Mirrored from yoreciclosv.com/Solucion Verde/C.A/Romero.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Apr 2025 21:14:14 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="../imagenes/logo.png" />
+	<title>Centro de Acopio Romero</title>
+	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="../css/slider.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/secciones.css">
+	<link rel="stylesheet" href="../css/footer.css">
+	<script src="../../../use.fontawesome.com/502b7294a9.js"></script>
+</head>
+<body>
+	<div id="navbar-placeholder"></div>
+
+	<div class="centro-acopio">
+		<section class="banner">
+			<h2>Centro de Acopio Romero</h2>
+		</section>
+
+		<section class="recomendaciones">
+			<h1>Recomendaciones Generales</h1>
+			<h5>1. Separar los materiales de reciclaje (botellas, cartón, entre otros) para facilitar el proceso de separación</h5>
+			<h5>2. Si entrega botellas o latas, vaciarlas de cualquier líquido</h5>
+		</section>
+
+		<section class="formulario-reciclaje">
+			<h2>Agregar Material al Carrito</h2>
+			<form id="form-reciclaje">
+				<div class="form-group">
+					<label for="material">Material:</label>
+					<select id="material" name="material" required>
+						<option value="">Seleccione un material</option>
+						<option value="PET">PET</option>
+						<option value="HDPE Duro">HDPE Duro</option>
+						<option value="Lata">Lata</option>
+						<option value="Aluminio">Aluminio</option>
+						<option value="Papel">Papel</option>
+						<option value="Hierro">Hierro</option>
+						<option value="Cobre">Cobre</option>
+						<option value="Bronce">Bronce</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="cantidad">Cantidad:</label>
+					<div class="cantidad-container">
+						<input type="number" id="cantidad" name="cantidad" min="0.1" step="0.1" required>
+						<select id="unidad" name="unidad" required title="Seleccione la unidad de medida">
+							<option value="libras">Libras</option>
+							<option value="kilos">Kilos</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="descripcion">Descripción:</label>
+					<textarea id="descripcion" name="descripcion" rows="3" placeholder="Ej: Botellas plásticas limpias, latas de aluminio, etc."></textarea>
+				</div>
+
+				<button type="submit" class="btn-agregar">Agregar al Carrito</button>
+			</form>
+		</section>
+
+		<section class="ubicacion">
+			<h1>Ubicación</h1>
+			<div class="mapa-container">
+				<iframe 
+					class="mapa-iframe"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.123456789012!2d-89.101083844637!3d13.713072318251564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQyJzQ2LjMiTiA4OcKwMDYnMDIuOCJX!5e0!3m2!1ses-419!2ssv!4v1710164584489!5m2!1ses-419!2ssv" 
+					width="100%" 
+					height="450" 
+					style="border:0;" 
+					allowfullscreen="" 
+					loading="lazy" 
+					referrerpolicy="no-referrer-when-downgrade"
+					title="Ubicación del Centro de Acopio Romero">
+				</iframe>
+			</div>
+		</section>
+
+		<div class="botones-navegacion">
+			<a href="../centrosacopio.html" class="button">Atrás</a>
+			<a href="../shoppingcart.html" class="button">Ver Carrito</a>
+		</div>
+	</div>
+
+	<footer id="footer-placeholder"></footer>
+
+	<script>
+		fetch("../navbar.html")
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById("navbar-placeholder").innerHTML = data;
+			});
+	</script>
+
+	<script>
+		fetch("../footer.html")
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById("footer-placeholder").innerHTML = data;
+			});
+	</script>
+
+	<script src="../js/carrito.js"></script>
+	<script src="../js/particles.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../../../ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="../js/alto.js"></script>
+</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'sxb1plzcpnl506235'},{'dcenter':'sxb1'},{'cp_id':'10137917'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='../../../img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'></script>
+<!-- Mirrored from yoreciclosv.com/Solucion Verde/C.A/Romero.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Apr 2025 21:14:17 GMT -->
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Reciclaje - YoReciclosv</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/logo.png" />
+    <script src="https://use.fontawesome.com/502b7294a9.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="carrito-container">
+        <h1>Carrito de Reciclaje</h1>
+        
+        <div class="carrito-vacio" id="carrito-vacio">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Tu carrito está vacío</p>
+            <a href="centrosacopio.html" class="button">Explorar Centros de Acopio</a>
+        </div>
+
+        <div class="carrito-contenido" id="carrito-contenido">
+            <div class="carrito-items" id="carrito-items">
+                <!-- Los items se agregarán dinámicamente aquí -->
+            </div>
+
+            <div class="carrito-resumen">
+                <h2>Resumen del Pedido</h2>
+                <div class="resumen-detalles">
+                    <p>Total Items: <span id="total-items">0</span></p>
+                    <p>Total Peso: <span id="total-peso">0</span></p>
+                </div>
+                <button class="btn-proceder" id="btn-proceder">Proceder con el Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <script>
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <script src="js/carrito.js"></script>
+    <script>
+        // Clase extendida de Carrito para manejar la vista
+        class CarritoVista extends Carrito {
+            constructor() {
+                super();
+                this.carritoVacio = document.getElementById('carrito-vacio');
+                this.carritoContenido = document.getElementById('carrito-contenido');
+                this.carritoItems = document.getElementById('carrito-items');
+                this.totalItems = document.getElementById('total-items');
+                this.totalPeso = document.getElementById('total-peso');
+                this.btnProceder = document.getElementById('btn-proceder');
+                
+                this.inicializarEventos();
+                this.actualizarVista();
+            }
+
+            inicializarEventos() {
+                // Manejar clic en botones de eliminar
+                this.carritoItems.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('btn-eliminar')) {
+                        const index = parseInt(e.target.dataset.index);
+                        this.eliminarItem(index);
+                        this.actualizarVista();
+                    }
+                });
+
+                // Manejar clic en botón de proceder
+                this.btnProceder.addEventListener('click', () => {
+                    if (this.items.length > 0) {
+                        alert('¡Gracias por tu pedido! Pronto nos pondremos en contacto contigo.');
+                        this.limpiarCarrito();
+                        this.actualizarVista();
+                    }
+                });
+            }
+
+            actualizarVista() {
+                if (this.items.length === 0) {
+                    this.carritoVacio.style.display = 'block';
+                    this.carritoContenido.style.display = 'none';
+                } else {
+                    this.carritoVacio.style.display = 'none';
+                    this.carritoContenido.style.display = 'flex';
+                    
+                    this.carritoItems.innerHTML = '';
+                    let totalLibras = 0;
+                    
+                    this.items.forEach((item, index) => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'carrito-item';
+                        itemElement.innerHTML = `
+                            <div class="item-info">
+                                <h3>${item.material}</h3>
+                                <p class="item-cantidad">Cantidad: ${item.cantidad} ${item.unidad}</p>
+                                <p class="item-centro">Centro: ${item.centro}</p>
+                                <p class="item-descripcion">${item.descripcion || 'Sin descripción'}</p>
+                                <p class="item-fecha">${item.fecha}</p>
+                            </div>
+                            <div class="item-acciones">
+                                <button class="btn-eliminar" data-index="${index}">Eliminar</button>
+                            </div>
+                        `;
+                        this.carritoItems.appendChild(itemElement);
+
+                        if (item.unidad === 'libras') {
+                            totalLibras += item.cantidad;
+                        } else if (item.unidad === 'kilos') {
+                            totalLibras += item.cantidad * 2.20462;
+                        }
+                    });
+
+                    this.totalItems.textContent = this.items.length;
+                    this.totalPeso.textContent = `${totalLibras.toFixed(2)} libras`;
+                }
+            }
+        }
+
+        // Inicializar la vista del carrito cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            new CarritoVista();
+        });
+    </script>
+</body>
+</html>
