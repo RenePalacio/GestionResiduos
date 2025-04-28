@@ -43,5 +43,11 @@ public class RecyclingController {
         }
         return ResponseEntity.ok(recycling.get());
     }
+
+    @GetMapping()
+    @Operation(summary = "Listar todos los reciclajes")
+    public ResponseEntity<?> getAllRecyclings() {
+        return ResponseEntity.ok(recyclingService.getAllRecyclings());
+    }
     
 }

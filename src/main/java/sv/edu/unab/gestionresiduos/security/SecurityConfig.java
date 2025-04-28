@@ -1,5 +1,7 @@
 package sv.edu.unab.gestionresiduos.security;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableMethodSecurity
@@ -26,6 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
@@ -51,5 +57,32 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+     @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        
+        // Permitir origenes (ajusta según tu frontend)
+        //configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        
+        configuration.addAllowedOriginPattern("*"); 
+
+        // Métodos HTTP permitidos
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        
+        // Permitir headers
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        
+        // Exponer headers (opcional, si necesitas leer Authorization u otros en el cliente)
+        configuration.setExposedHeaders(List.of("Authorization"));
+        
+        // Permitir enviar cookies o credenciales (si usas sesiones)
+        configuration.setAllowCredentials(true);
+        
+        // Registrar la configuración para todas las rutas
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }
