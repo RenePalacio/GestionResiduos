@@ -1,0 +1,144 @@
+.tipos-plasticos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.tipos-plasticos-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.tipos-plasticos-header h1 {
+  color: #2e7d32;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tipos-plasticos-header p {
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tipos-plasticos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tipo-plastico-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.tipo-plastico-card:hover {
+  transform: translateY(-5px);
+}
+
+.tipo-plastico-header {
+  padding: 1.5rem;
+  color: white;
+  position: relative;
+}
+
+.tipo-plastico-header h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.reciclable-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.reciclable-badge.reciclable {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2e7d32;
+}
+
+.reciclable-badge.no-reciclable {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #c62828;
+}
+
+.tipo-plastico-content {
+  padding: 1.5rem;
+}
+
+.tipo-plastico-content h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.tipo-plastico-content p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.ejemplos-container {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.ejemplos-container h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ejemplos-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ejemplos-container li {
+  color: #666;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ejemplos-container li:last-child {
+  border-bottom: none;
+}
+
+.tipo-plastico-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.info-btn {
+  background-color: #2e7d32;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.info-btn:hover {
+  background-color: #1b5e20;
+}
+
+@media (max-width: 768px) {
+  .tipos-plasticos-grid {
+    grid-template-columns: 1fr;
+  }
+} 

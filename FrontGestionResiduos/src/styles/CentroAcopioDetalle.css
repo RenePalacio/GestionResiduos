@@ -1,0 +1,98 @@
+.centro-detalle-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.centro-detalle-header {
+  margin-bottom: 2rem;
+}
+
+.volver-link {
+  display: inline-block;
+  color: #2e7d32;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.volver-link:hover {
+  text-decoration: underline;
+}
+
+.centro-detalle-header h1 {
+  color: #2e7d32;
+  margin: 0;
+}
+
+.centro-detalle-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.centro-imagen img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.centro-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.descripcion {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.info-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h3 {
+  color: #2e7d32;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.info-section p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.materiales-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.material-tag {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .centro-detalle-content {
+    grid-template-columns: 1fr;
+  }
+
+  .centro-imagen img {
+    height: 300px;
+  }
+
+  .centro-detalle-container {
+    padding: 1rem;
+  }
+} 

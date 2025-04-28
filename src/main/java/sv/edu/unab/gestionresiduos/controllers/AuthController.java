@@ -16,6 +16,8 @@ import sv.edu.unab.gestionresiduos.models.User;
 import sv.edu.unab.gestionresiduos.services.UserService;
 import sv.edu.unab.gestionresiduos.utils.JwtUtils;
 
+import java.util.Map;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/auth")
@@ -52,7 +54,7 @@ public class AuthController {
     @Operation(summary = "Registrar nuevo usuario", description = "Permite crear un nuevo usuario en el sistema")
     public ResponseEntity<?> register(@RequestBody RegisterRequestDto request) {
         if (userService.findByEmail(request.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body("El correo ya está registrado.");
+            return ResponseEntity.badRequest().body(Map.of("message", "El correo ya está registrado."));
         }
 
         User user = User.builder()
@@ -65,7 +67,7 @@ public class AuthController {
 
         userService.save(user);
 
-        return ResponseEntity.status(201).body("Usuario registrado exitosamente.");
+        return ResponseEntity.status(201).body(Map.of("message", "Usuario registrado exitosamente."));
     }
 }
 
