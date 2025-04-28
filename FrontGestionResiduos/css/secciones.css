@@ -1,0 +1,277 @@
+*{
+	box-sizing: border-box;
+}
+h1, h2, h4, h5, h6 {
+	text-transform: uppercase;
+	color: #444;
+	letter-spacing: 1px;
+}
+
+
+h2{
+	font-size: 26px;
+	color: #333;
+}
+h3{
+	
+	font-size: 20px;
+	line-height: 1.5;
+	padding-top:20px; 
+	font-weight: normal;
+
+}
+h4{
+	margin-top: 15px;
+	font-size: 16px;
+}
+h5{
+	font-family: Lato, sans-serif;
+	line-height: 1.5;
+	font-weight: normal;
+	padding: 10px 0;
+	font-size: 12px;
+}
+p{
+	color: #777;
+	font-size: 15px;
+
+}
+
+.contenedor-columnas2 {
+	/* Fondo de la sección */
+	background-color: #f7f7f7;
+	/* Padding para dar espacio entre el contenido y el borde */
+	padding: 40px;
+	/* Sombra para dar profundidad */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contenedor-columnas2 p {
+	/* Tamaño del texto */
+	font-size: 18px;
+	/* Color del texto */
+	color: #666;
+	/* Espacio entre los párrafos */
+	margin-bottom: 20px;
+	/* Alineación del texto */
+	text-align: justify;
+  }
+  
+  .contenedor-columnas2 br {
+	/* Espacio entre los párrafos */
+	margin-bottom: 10px;
+  }
+  
+  /* Estilo para los títulos */
+  .titulo {
+	font-weight: bold;
+	color: #337ab7;
+	margin-bottom: 10px;
+  }
+
+.wap{
+	width: 90%;
+	margin: auto;
+}
+
+
+
+
+.contenedor-columnas{
+	width: 100%;
+	margin: auto;
+	margin-bottom: 50px;
+	text-align: justify;
+}
+
+
+.columnasx3{
+	width: 33.333%;
+	float: left;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	margin: auto;
+}
+.columnasx3 img{
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+
+}
+
+
+
+.columnasx3 i{
+	float: left;
+	padding-right: 20px;
+	color: #444;
+}
+.columnasx3 h4{
+	padding-bottom: 20px;
+}
+
+.caja{
+	width: 300px;
+	height: 300px;
+	background-color: rgba(70, 175, 0, 0.541);
+	margin-bottom: 20px;
+	display: inline-block;
+	border-radius: 20px;
+}
+
+.caja:hover{
+	
+	background-color: aquamarine;
+	transition: .4s;
+}
+
+.caja h1{
+	text-align: center;
+	color: #000;
+	font-size:larger;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*Estilo de CARDS para centros de acopio*/
+article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: hsl(0, 0%, 78%);
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: hsl(121, 81%, 36%);
+};
+
+
+article a:focus {
+  outline: 1px dotted hsl(171, 83%, 45%);
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: hsl(121, 81%, 36%);
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+.articles {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
