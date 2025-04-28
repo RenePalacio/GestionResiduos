@@ -1,0 +1,165 @@
+<header>
+	<!-- aquí comienza nuestro menu -->
+	<div class="ancho">
+		<div class="logo">
+			<a href="../index.html">
+				<img src="../imagenes/logo.png" alt="Logo de YoReciclosv" width="100px" height="100px">
+			</a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="../index.html">Inicio</a></li>
+				<li><a href="../centrosacopio.html">Centros de Acopio</a></li>
+				<li><a href="https://www.google.com/maps/d/u/2/viewer?mid=1PzHyuXLcr5-T_CfUTF7GAVERschFqq0&amp;ll=13.785532043551068%2C-89.17800313997114&amp;z=17">Ubicación Geográfica C.A</a></li>
+				<li><a href="../comoreciclar.html">Cultura Ambiental</a></li>
+				<!-- <li><a href="../perfil.html">Perfil</a></li> -->
+				<li id="admin-menu" class="admin-menu-item" style="display: none;">
+					<a href="#" class="admin-menu-link">Administración ▼</a>
+					<ul class="admin-submenu">
+						<li class="admin-submenu-item"><a href="../admin/centroacopio.html" class="admin-submenu-link">Centro de Acopio</a></li>
+						<li class="admin-submenu-item"><a href="../admin/reciclaje.html" class="admin-submenu-link">Reciclaje</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="../shoppingcart.html" class="carrito-link">
+						<img src="../imagenes/shoppingcart.png" alt="Carrito de compras" class="icono-carrito">
+						<span id="contador-carrito" class="carrito-contador">0</span>
+					</a>
+				</li>
+				<li><button class="cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button></li>
+			</ul>
+		</nav>
+	</div>
+	<style>
+		/* Estilos para el menú de administración */
+		.admin-menu-item {
+			position: relative;
+		}
+
+		.admin-menu-link {
+			display: block;
+			padding: 10px 15px;
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.admin-submenu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: #ffffff;
+			min-width: 200px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			border-radius: 4px;
+			border: 1px solid #e0e0e0;
+		}
+
+		.admin-menu-item:hover .admin-submenu {
+			display: block;
+		}
+
+		.admin-submenu-item {
+			padding: 0;
+			margin: 0;
+		}
+
+		.admin-submenu-link {
+			display: block;
+			padding: 10px 15px;
+			color: #333333;
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+
+		.admin-submenu-link:hover {
+			background-color: #f5f5f5;
+			color: #2e7d32;
+		}
+
+		/* Estilos para el triángulo del menú desplegable */
+		.admin-menu-link::after {
+			content: "▼";
+			margin-left: 5px;
+			font-size: 0.8em;
+		}
+
+		/* Asegurar que el submenú no se oculte al pasar el mouse */
+		.admin-submenu {
+			pointer-events: auto;
+		}
+
+		/* Estilos para dispositivos móviles */
+		@media (max-width: 768px) {
+			.admin-submenu {
+				position: static;
+				width: 100%;
+				box-shadow: none;
+				border: none;
+			}
+
+			.admin-menu-item:hover .admin-submenu {
+				display: none;
+			}
+
+			.admin-menu-item.active .admin-submenu {
+				display: block;
+			}
+		}
+	</style>
+<script>
+	function cerrarSesion() {
+		if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
+			// Limpiar el localStorage al cerrar sesión
+			localStorage.clear(); // Limpia todo el localStorage
+			window.location.href = '../login.html';
+		}
+	}
+
+	// Función para verificar la autenticación
+	function verificarAutenticacion() {
+		const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+		const adminMenu = document.getElementById('admin-menu');
+		
+		console.log('Estado de autenticación:', isLoggedIn);
+		console.log('Valor de loggedIn en localStorage:', localStorage.getItem('loggedIn'));
+		
+		if (adminMenu) {
+			adminMenu.style.display = isLoggedIn ? 'block' : 'none';
+		}
+
+		// Verificar si el usuario está autenticado para el menú de administración
+		const adminMenuLink = document.querySelector('.admin-menu-link');
+		if (adminMenuLink) {
+			adminMenuLink.onclick = null; // Limpiar eventos anteriores
+			
+			if (isLoggedIn) {
+				adminMenuLink.addEventListener('click', function(e) {
+					if (window.innerWidth <= 768) {
+						e.preventDefault();
+						const adminMenuItem = this.parentElement;
+						adminMenuItem.classList.toggle('active');
+					}
+				});
+			} else {
+				adminMenuLink.addEventListener('click', function(e) {
+					e.preventDefault();
+					alert('Debes iniciar sesión para acceder al menú de administración.');
+					window.location.href = '../login.html';
+				});
+			}
+		}
+	}
+
+	// Inicializar cuando cargue la página
+	document.addEventListener('DOMContentLoaded', verificarAutenticacion);
+
+	// Escuchar cambios en el localStorage
+	window.addEventListener('storage', verificarAutenticacion);
+</script>
+
+</header>

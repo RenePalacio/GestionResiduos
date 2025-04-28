@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Mirrored from yoreciclosv.com/Solucion Verde/C.A/recitodo.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Apr 2025 21:14:18 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="../imagenes/logo.png" />
+	<title>Centro de Acopio Recitodo</title>
+	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="../css/slider.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/secciones.css">
+	<link rel="stylesheet" href="../css/footer.css">
+	<link rel="stylesheet" href="../calculadora-js-main/css/main.css">
+	<script src="../../../use.fontawesome.com/502b7294a9.js"></script>
+	<style>
+		.centro-acopio {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		.banner {
+			background: linear-gradient(135deg, #2ecc71, #27ae60);
+			color: white;
+			padding: 30px;
+			text-align: center;
+			border-radius: 10px;
+			margin-bottom: 30px;
+			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		}
+		.recomendaciones {
+			background: #f8f9fa;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 30px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+		}
+		.recomendaciones h1 {
+			color: #2ecc71;
+			margin-bottom: 20px;
+		}
+		.recomendaciones h5 {
+			color: #555;
+			margin: 10px 0;
+			padding-left: 20px;
+		}
+		.tabla-materiales {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 30px 0;
+			background: white;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		}
+		.tabla-materiales th, .tabla-materiales td {
+			padding: 15px;
+			text-align: left;
+			border-bottom: 1px solid #eee;
+		}
+		.tabla-materiales th {
+			background: #2ecc71;
+			color: white;
+		}
+		.tabla-materiales tr:hover {
+			background: #f8f9fa;
+		}
+		.calculadora {
+			background: #f8f9fa;
+			padding: 20px;
+			border-radius: 10px;
+			margin-top: 20px;
+		}
+		.ubicacion {
+			margin: 30px 0;
+		}
+		.ubicacion h1 {
+			color: #2ecc71;
+			margin-bottom: 20px;
+		}
+		.mapa-iframe {
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		}
+		.button {
+			display: inline-block;
+			padding: 12px 30px;
+			background: #2ecc71;
+			color: white;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background 0.3s;
+			margin-top: 20px;
+		}
+		.button:hover {
+			background: #27ae60;
+		}
+	</style>
+</head>
+<body>
+	<div id="navbar-placeholder"></div>
+
+	<div class="centro-acopio">
+		<section class="banner">
+			<h2>Centro de Acopio Recitodo</h2>
+		</section>
+
+		<section class="recomendaciones">
+			<h1>Recomendaciones Generales</h1>
+			<h5>1. Separar los materiales de reciclaje (botellas, cartón, entre otros) para facilitar el proceso de separación</h5>
+			<h5>2. Si entrega botellas o latas, vaciarlas de cualquier líquido</h5>
+		</section>
+
+		<section class="formulario-reciclaje">
+			<h2>Agregar Material al Carrito</h2>
+			<form id="form-reciclaje">
+				<div class="form-group">
+					<label for="material">Material:</label>
+					<select id="material" name="material" required>
+						<option value="">Seleccione un material</option>
+						<option value="PET">PET</option>
+						<option value="Plástico duro">Plástico duro</option>
+						<option value="Cartón">Cartón</option>
+						<option value="Lata">Lata</option>
+						<option value="Hierro">Hierro</option>
+						<option value="Cobre">Cobre</option>
+						<option value="Plásticos">Plásticos</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="cantidad">Cantidad:</label>
+					<div class="cantidad-container">
+						<input type="number" id="cantidad" name="cantidad" min="0.1" step="0.1" required>
+						<select id="unidad" name="unidad" required title="Seleccione la unidad de medida">
+							<option value="libras">Libras</option>
+							<option value="kilos">Kilos</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="descripcion">Descripción:</label>
+					<textarea id="descripcion" name="descripcion" rows="3" placeholder="Ej: Botellas plásticas limpias, latas de aluminio, etc."></textarea>
+				</div>
+
+				<button type="submit" class="btn-agregar">Agregar al Carrito</button>
+			</form>
+		</section>
+
+		<section class="ubicacion">
+			<h1>Ubicación</h1>
+			<div class="mapa-container">
+				<iframe 
+					class="mapa-iframe"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4406.290170998884!2d-89.1774434!3d13.698816299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6331fd05f9fc01%3A0x27ce3923e5a38a4e!2sRecitodo!5e1!3m2!1ses-419!2ssv!4v1699575249082!5m2!1ses-419!2ssv" 
+					width="100%" 
+					height="450" 
+					style="border:0;" 
+					allowfullscreen="" 
+					loading="lazy" 
+					referrerpolicy="no-referrer-when-downgrade"
+					title="Ubicación del Centro de Acopio Recitodo">
+				</iframe>
+			</div>
+		</section>
+
+		<div class="botones-navegacion">
+			<a href="../centrosacopio.html" class="button">Atrás</a>
+			<a href="../shoppingcart.html" class="button">Ver Carrito</a>
+		</div>
+	</div>
+
+	<footer id="footer-placeholder"></footer>
+
+	<script>
+		fetch("../navbar.html")
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById("navbar-placeholder").innerHTML = data;
+			});
+	</script>
+
+	<script>
+		fetch("../footer.html")
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById("footer-placeholder").innerHTML = data;
+			});
+	</script>
+
+	<script src="../js/carrito.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const formReciclaje = document.getElementById('form-reciclaje');
+			if (formReciclaje) {
+				formReciclaje.addEventListener('submit', (e) => {
+					e.preventDefault();
+					
+					const material = document.getElementById('material').value;
+					const cantidad = document.getElementById('cantidad').value;
+					const unidad = document.getElementById('unidad').value;
+					const descripcion = document.getElementById('descripcion').value;
+					const centro = 'Centro de Acopio Recitodo';
+
+					if (!material || !cantidad) {
+						alert('Por favor, selecciona un material e ingresa la cantidad');
+						return;
+					}
+
+					const carrito = new Carrito();
+					carrito.agregarItem(material, cantidad, unidad, descripcion, centro);
+					formReciclaje.reset();
+				});
+			}
+		});
+	</script>
+	<script src="../js/particles.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../../../ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="../js/alto.js"></script>
+</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'sxb1plzcpnl506235'},{'dcenter':'sxb1'},{'cp_id':'10137917'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='../../../img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'></script>
+<!-- Mirrored from yoreciclosv.com/Solucion Verde/C.A/recitodo.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Apr 2025 21:14:18 GMT -->
+</html>
