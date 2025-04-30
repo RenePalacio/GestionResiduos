@@ -13,10 +13,16 @@ import AdminPanel from './pages/AdminPanel';
 import ProtectedRoute from './components/ProtectedRoute';
 import Error404 from './components/Error404';
 import Error500 from './components/Error500';
+import TiposPlasticos from './pages/TiposPlasticos'
+import Las3R from './pages/Las3R'
+import Legislacion from './pages/Legislacion'
+import ScrollToTop from './components/ScrollToTop';
 import './styles/App.css';
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   useEffect(() => {
     // Verificar si hay un token en localStorage
@@ -24,8 +30,10 @@ const App = () => {
     setIsAuthenticated(!!token);
   }, []);
 
+
   return (
     <Router>
+       <ScrollToTop />
       <div className="app">
         <Navbar isAuthenticated={isAuthenticated} />
         <main>
@@ -36,8 +44,11 @@ const App = () => {
             <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/centros-acopio" element={<CentrosAcopio />} />
-            <Route path="/centro-acopio/:id" element={<CentroAcopioDetalle />} />
+            <Route path="/centros-acopio/:id" element={<CentroAcopioDetalle />} />
             <Route path="/como-reciclar" element={<ComoReciclar />} />
+            <Route path="/tipos-plasticos" element={<TiposPlasticos />} />
+            <Route path="/las-3r" element={<Las3R />} />
+            <Route path="/legislacion" element={<Legislacion />} />
             
             {/* Ruta protegida para administración */}
             <Route path="/admin" element={

@@ -57,24 +57,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sección de Galería */}
-      <section className="gallery-section">
-        <h2>Galería de Imágenes</h2>
-        <div className="gallery-grid">
-          <div className="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Reciclaje" />
-            <p>Centro de Acopio</p>
-          </div>
-          <div className="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Reciclaje" />
-            <p>Proceso de Reciclaje</p>
-          </div>
-          <div className="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Reciclaje" />
-            <p>Materiales Reciclables</p>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Sección de Historia */}
       <section className="history-section">
@@ -99,19 +82,19 @@ const Home = () => {
         <h2>Desarrolladores</h2>
         <div className="developers-grid">
           <div className="developer-card">
-            <h3>Mario Galdamez</h3>
+            <h3>Marvin Galdamez</h3>
             <a href="https://github.com/mgaldamez" target="_blank" rel="noopener noreferrer" className="github-link">
               <i className="fab fa-github"></i> GitHub
             </a>
           </div>
           <div className="developer-card">
-            <h3>René Palacio</h3>
+            <h3>René Palacios</h3>
             <a href="https://github.com/RenePalacio" target="_blank" rel="noopener noreferrer" className="github-link">
               <i className="fab fa-github"></i> GitHub
             </a>
           </div>
           <div className="developer-card">
-            <h3>Andres Fuentes</h3>
+            <h3>Andres Galan</h3>
             <a href="https://github.com/andresfgh" target="_blank" rel="noopener noreferrer" className="github-link">
               <i className="fab fa-github"></i> GitHub
             </a>

@@ -6,91 +6,91 @@ const CentrosAcopio = () => {
     {
       id: 'recitodo',
       nombre: 'Recitodo',
-      imagen: '/imagenes/Recitodo.jpg',
+      imagen: 'https://i.ibb.co/tw7J8ZKp/Recitodo.jpg',
       descripcion: 'Centro de acopio especializado en reciclaje de diversos materiales.'
     },
     {
       id: '6ta-avenida',
       nombre: 'C.A 6ta Avenida',
-      imagen: '/imagenes/6taAV.jpg',
+      imagen: 'https://i.ibb.co/JWLz1qjB/6taAV.jpg',
       descripcion: 'Centro de acopio ubicado en la 6ta Avenida Norte.'
     },
     {
       id: 'ayala',
       nombre: 'Ayala',
-      imagen: '/imagenes/Ayala.jpg',
+      imagen: 'https://i.ibb.co/JWLz1qjB/6taAV.jpg',
       descripcion: 'Centro de acopio Ayala, comprometido con el medio ambiente.'
     },
     {
       id: 'romero',
       nombre: 'Romero',
-      imagen: '/imagenes/Romero.jpg',
+      imagen: 'https://i.ibb.co/Kc6g7X5S/Romero.jpg',
       descripcion: 'Centro de acopio Romero, facilitando el reciclaje en la comunidad.'
     },
     {
       id: 'el-tamarindo',
       nombre: 'El Tamarindo',
-      imagen: '/imagenes/Tamarindo.jpg',
+      imagen: 'https://i.ibb.co/3YzSPwT4/sl1.png',
       descripcion: 'Centro de acopio El Tamarindo, promoviendo la cultura del reciclaje.'
     },
     {
       id: 'sarmiento',
       nombre: 'Sarmiento',
-      imagen: '/imagenes/Sarmiento.jpg',
+      imagen: 'https://i.ibb.co/QWjNjwn/Sarmiento.jpg',
       descripcion: 'Centro de acopio Sarmiento, contribuyendo al desarrollo sostenible.'
     },
     {
       id: 'el-catedral',
       nombre: 'El Catedral',
-      imagen: '/imagenes/Catedral.jpg',
+      imagen: 'https://i.ibb.co/7JnMPxcj/Catedral.jpg',
       descripcion: 'Centro de acopio El Catedral, ubicado en el centro histórico.'
     },
     {
       id: 'rosa-rodriguez',
       nombre: 'Rosa Rodriguez',
-      imagen: '/imagenes/RosaRodriguez.jpg',
+      imagen: 'https://i.ibb.co/rGsRx53y/Rosa-Rodriguez.jpg',
       descripcion: 'Centro de acopio Rosa Rodriguez, comprometido con la comunidad.'
     },
     {
       id: 'planeta-limpio',
       nombre: 'Planeta Limpio',
-      imagen: '/imagenes/Planetalimpio.jpg',
+      imagen: 'https://i.ibb.co/PvhC4k42/download.jpg',
       descripcion: 'Centro de acopio Planeta Limpio, trabajando por un mundo más verde.'
     },
     {
       id: 'majahual',
       nombre: 'Majahual',
-      imagen: '/imagenes/Majahual.jpg',
+      imagen: 'https://i.ibb.co/1tyqtDDq/Majahual.jpg',
       descripcion: 'Centro de acopio Majahual, promoviendo el reciclaje en la zona.'
     },
     {
       id: 'lese',
       nombre: 'LESE',
-      imagen: '/imagenes/LESE.jpg',
+      imagen: 'https://i.ibb.co/JWxtQ8M2/LESE.jpg',
       descripcion: 'Centro de acopio LESE, especializado en materiales reciclables.'
     },
     {
       id: 'la-esperanza',
       nombre: 'La Esperanza',
-      imagen: '/imagenes/LaEsperanza.jpg',
+      imagen: 'https://i.ibb.co/XZqk86Zg/La-Esperanza.jpg',
       descripcion: 'Centro de acopio La Esperanza, trabajando por un futuro mejor.'
     },
     {
       id: 'jefren',
       nombre: 'Jefren',
-      imagen: '/imagenes/Jefren.jpg',
+      imagen: 'https://i.ibb.co/s9jSVtt5/Jefren.jpg',
       descripcion: 'Centro de acopio Jefren, facilitando el reciclaje en la comunidad.'
     },
     {
       id: 'incodesa',
       nombre: 'INCODESA',
-      imagen: '/imagenes/INCODESA.jpg',
+      imagen: 'https://i.ibb.co/9mvZsYHd/INCODESA.jpg',
       descripcion: 'Centro de acopio INCODESA, comprometido con el medio ambiente.'
     },
     {
       id: 'servicios-y-reciclajes',
       nombre: 'Servicios y Reciclajes',
-      imagen: '/imagenes/ServiciosYRecicla.jpg',
+      imagen: 'https://i.ibb.co/tTHgKJ9D/Servicios-YRecicla.jpg',
       descripcion: 'Centro de acopio Servicios y Reciclajes, ofreciendo soluciones integrales.'
     }
   ];

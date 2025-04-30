@@ -1,7 +1,7 @@
 header {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -20,9 +20,8 @@ header {
   height: 100%;
 }
 
-/* Agregar espacio para el navbar fijo */
 main {
-  margin-top: 120px; /* Aumentado de 80px a 120px */
+  margin-top: 120px; /* Aumentado para que no tape el contenido */
   padding-top: 1rem;
 }
 
@@ -59,7 +58,6 @@ nav ul li a:hover {
   color: #2e7d32;
 }
 
-/* Estilos para el menú de administración */
 .admin-menu-item {
   position: relative;
 }
@@ -109,14 +107,12 @@ nav ul li a:hover {
   color: #2e7d32;
 }
 
-/* Estilos para el triángulo del menú desplegable */
 .admin-menu-link::after {
   content: "▼";
   margin-left: 5px;
   font-size: 0.8em;
 }
 
-/* Estilos para el carrito */
 .carrito-link {
   position: relative;
   display: flex;
@@ -143,7 +139,6 @@ nav ul li a:hover {
   font-size: 0.75rem;
 }
 
-/* Estilos para el perfil */
 .profile-link {
   display: flex;
   align-items: center;
@@ -160,7 +155,6 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 
-/* Estilos para los enlaces de autenticación */
 .auth-link {
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -176,7 +170,6 @@ nav ul li a:hover {
   background-color: #1b5e20;
 }
 
-/* Estilos para el botón de cerrar sesión */
 .cerrar-sesion {
   background-color: #2e7d32;
   color: white;
@@ -192,21 +185,49 @@ nav ul li a:hover {
   background-color: #1b5e20;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-  .navbar-container {
-    flex-direction: column;
-    height: auto;
-    padding: 1rem;
+/* Botón menú hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  z-index: 1100;
+}
+
+body.login-page header,
+body.register-page header {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+    height: 100px;
   }
 
-  .logo {
-    margin-bottom: 1rem;
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  nav.open {
+    display: block;
   }
 
   nav ul {
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    padding: 1rem 0;
   }
 
   nav ul li {
@@ -217,27 +238,76 @@ nav ul li a:hover {
 
   .admin-submenu {
     position: static;
+    display: none;
     width: 100%;
     box-shadow: none;
     border: none;
-  }
-
-  .admin-menu-item:hover .admin-submenu {
-    display: none;
+    background-color: #f9f9f9;
   }
 
   .admin-menu-item.active .admin-submenu {
     display: block;
   }
 
-  .auth-link {
+  .auth-link,
+  .cerrar-sesion {
     display: block;
-    width: 100%;
+    width: 90%;
     text-align: center;
-    margin: 0.5rem 0;
+    margin: 0.5rem auto;
+  }
+
+  .carrito-link {
+    margin-top: 1rem;
+  }
+
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 0 1rem;
+    height: 70px;
+  }
+
+  .logo {
+    width: 95x; 
+    height: 75px;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0.8rem 0;
+    height: 100px;
+  }
+
+  .logo {
+    width: 95x; 
+    height: 75px;
+    margin-bottom: 3rem;
+  }
+
+  .navbar-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 0;
+  }
+
+  .navbar-container {
+    padding: 0.8rem;
   }
 
   .auth-link.register {
     margin-top: 1rem;
   }
-} 
+
+  .carrito-link {
+    margin-top: 1rem;
+  }
+}

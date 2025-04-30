@@ -73,7 +73,6 @@ const Las3R = () => {
             </div>
 
             <div className="r-footer">
-              <button className="saber-mas-btn">Saber más</button>
             </div>
           </div>
         ))}

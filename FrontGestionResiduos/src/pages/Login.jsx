@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Notification from '../components/Notification';
 import '../styles/Login.css';
@@ -11,6 +11,13 @@ const Login = ({ setIsAuthenticated }) => {
   const [notificationMessage, setNotificationMessage] = useState('');
   const [notificationType, setNotificationType] = useState('success');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.classList.add('login-page');
+    return () => {
+      document.body.classList.remove('login-page');
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,4 +106,4 @@ const Login = ({ setIsAuthenticated }) => {
   );
 };
 
-export default Login; 
+export default Login;

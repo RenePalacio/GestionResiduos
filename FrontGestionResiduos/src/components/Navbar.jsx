@@ -3,16 +3,21 @@ import { useState } from 'react';
 import Notification from './Notification';
 import ConfirmModal from './ConfirmModal';
 import '../styles/Navbar.css';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = ({ isAuthenticated }) => {
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
   const [notificationType, setNotificationType] = useState('success');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const location = useLocation();
+  const isLoginOrRegisterPage = location.pathname === '/login' || location.pathname === '/register';
 
   const handleLogout = () => {
     setShowConfirmModal(true);
   };
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const confirmLogout = () => {
     localStorage.clear();
@@ -31,10 +36,16 @@ const Navbar = ({ isAuthenticated }) => {
         <div className="navbar-container">
           <div className="logo">
             <Link to="/">
-              <img src="/imagenes/logo.png" alt="Logo de YoReciclosv" width="100px" height="100px" />
+              <img src="https://i.ibb.co/q3GGBwm2/logo.png" alt="Logo de YoReciclosv" width="100px" height="100px" />
             </Link>
           </div>
-          <nav>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            >
+            ☰
+          </button>
+          <nav className={menuOpen ? 'open' : ''}>
             <ul>
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/centros-acopio">Centros de Acopio</Link></li>

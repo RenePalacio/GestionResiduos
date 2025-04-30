@@ -100,7 +100,6 @@ const TiposPlasticos = () => {
             </div>
 
             <div className="tipo-plastico-footer">
-              <button className="info-btn">Más Información</button>
             </div>
           </div>
         ))}

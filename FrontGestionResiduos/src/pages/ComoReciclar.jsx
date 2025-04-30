@@ -143,7 +143,6 @@ const ComoReciclar = () => {
             </div>
 
             <div className="material-footer">
-              <button className="info-btn">Más información</button>
             </div>
           </div>
         ))}

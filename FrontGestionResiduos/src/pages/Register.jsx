@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Register.css';
 
@@ -9,6 +9,13 @@ const Register = ({ setIsAuthenticated }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+      document.body.classList.add('register-page');
+      return () => {
+        document.body.classList.remove('register-page');
+      };
+    }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
