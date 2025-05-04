@@ -1,6 +1,5 @@
 package sv.edu.unab.gestionresiduos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 

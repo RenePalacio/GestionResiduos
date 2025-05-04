@@ -64,15 +64,15 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // Permitir origenes (ajusta según tu frontend)
-        //configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
         
-        configuration.addAllowedOriginPattern("*"); 
+        //configuration.addAllowedOriginPattern("*"); 
 
         // Métodos HTTP permitidos
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         
         // Permitir headers
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Access-Control-Allow-Origin"));
         
         // Exponer headers (opcional, si necesitas leer Authorization u otros en el cliente)
         configuration.setExposedHeaders(List.of("Authorization"));
