@@ -17,6 +17,7 @@ import TiposPlasticos from './pages/TiposPlasticos'
 import Las3R from './pages/Las3R'
 import Legislacion from './pages/Legislacion'
 import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import './styles/App.css';
 
 
@@ -63,6 +64,7 @@ const App = () => {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTopButton />
       </div>
     </Router>
   );

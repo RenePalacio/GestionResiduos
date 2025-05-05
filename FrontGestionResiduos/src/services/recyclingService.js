@@ -4,45 +4,54 @@ import api from './api';
 const recyclingService = {
   getAllRecycling: async () => {
     try {
-      return await api.get('/recycling');
+      const response = await api.get('/recycling');
+      if (!Array.isArray(response)) {
+        console.warn('La respuesta no es un array:', response);
+        return [];
+      }
+      return response;
     } catch (error) {
-      console.error('Error obteniendo procesos de reciclaje:', error);
-      throw error;
+      console.error('Error obteniendo registros de reciclaje:', error);
+      return [];
     }
   },
 
   getRecyclingById: async (id) => {
     try {
-      return await api.get(`/recycling/${id}`);
+      const response = await api.get(`/recycling/${id}`);
+      return response;
     } catch (error) {
-      console.error('Error obteniendo proceso de reciclaje:', error);
+      console.error('Error obteniendo registro de reciclaje:', error);
       throw error;
     }
   },
 
   createRecycling: async (recyclingData) => {
     try {
-      return await api.post('/recycling', recyclingData);
+      const response = await api.post('/recycling', recyclingData);
+      return response;
     } catch (error) {
-      console.error('Error creando proceso de reciclaje:', error);
+      console.error('Error creando registro de reciclaje:', error);
       throw error;
     }
   },
 
   updateRecycling: async (id, recyclingData) => {
     try {
-      return await api.put(`/recycling/${id}`, recyclingData);
+      const response = await api.put(`/recycling/${id}`, recyclingData);
+      return response;
     } catch (error) {
-      console.error('Error actualizando proceso de reciclaje:', error);
+      console.error('Error actualizando registro de reciclaje:', error);
       throw error;
     }
   },
 
   deleteRecycling: async (id) => {
     try {
-      return await api.delete(`/recycling/${id}`);
+      await api.delete(`/recycling/${id}`);
+      return true;
     } catch (error) {
-      console.error('Error eliminando proceso de reciclaje:', error);
+      console.error('Error eliminando registro de reciclaje:', error);
       throw error;
     }
   },

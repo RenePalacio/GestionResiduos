@@ -40,6 +40,8 @@ const Login = ({ setIsAuthenticated }) => {
 
       const data = await response.json();
       localStorage.setItem('token', data.token);
+      localStorage.setItem('role', data.role);
+      localStorage.setItem('user', JSON.stringify(data));
       setIsAuthenticated(true);
       
       setNotificationMessage('¡Bienvenido! Has iniciado sesión exitosamente');

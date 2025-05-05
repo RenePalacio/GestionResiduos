@@ -4,16 +4,22 @@ import api from './api';
 const recyclableService = {
   getAllRecyclables: async () => {
     try {
-      return await api.get('/recyclables');
+      const response = await api.get('/recyclables');
+      if (!Array.isArray(response)) {
+        console.warn('La respuesta no es un array:', response);
+        return [];
+      }
+      return response;
     } catch (error) {
       console.error('Error obteniendo reciclables:', error);
-      throw error;
+      return [];
     }
   },
 
   getRecyclableById: async (id) => {
     try {
-      return await api.get(`/recyclables/${id}`);
+      const response = await api.get(`/recyclables/${id}`);
+      return response;
     } catch (error) {
       console.error('Error obteniendo reciclable:', error);
       throw error;
@@ -22,7 +28,8 @@ const recyclableService = {
 
   createRecyclable: async (recyclableData) => {
     try {
-      return await api.post('/recyclables', recyclableData);
+      const response = await api.post('/recyclables', recyclableData);
+      return response;
     } catch (error) {
       console.error('Error creando reciclable:', error);
       throw error;
@@ -31,7 +38,8 @@ const recyclableService = {
 
   updateRecyclable: async (id, recyclableData) => {
     try {
-      return await api.put(`/recyclables/${id}`, recyclableData);
+      const response = await api.put(`/recyclables/${id}`, recyclableData);
+      return response;
     } catch (error) {
       console.error('Error actualizando reciclable:', error);
       throw error;
@@ -40,7 +48,8 @@ const recyclableService = {
 
   deleteRecyclable: async (id) => {
     try {
-      return await api.delete(`/recyclables/${id}`);
+      await api.delete(`/recyclables/${id}`);
+      return true;
     } catch (error) {
       console.error('Error eliminando reciclable:', error);
       throw error;

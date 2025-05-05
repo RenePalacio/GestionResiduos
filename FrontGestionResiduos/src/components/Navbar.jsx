@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Notification from './Notification';
 import ConfirmModal from './ConfirmModal';
 import '../styles/Navbar.css';
@@ -12,6 +12,12 @@ const Navbar = ({ isAuthenticated }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const location = useLocation();
   const isLoginOrRegisterPage = location.pathname === '/login' || location.pathname === '/register';
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    setUserRole(role);
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     setShowConfirmModal(true);
@@ -59,6 +65,7 @@ const Navbar = ({ isAuthenticated }) => {
               {isAuthenticated ? (
                 <>
                   <li><Link to="/admin">Administración</Link></li>
+                  <li><Link to="/profile">Perfil</Link></li>
                   <li>
                     <button className="cerrar-sesion" onClick={handleLogout}>
                       Cerrar Sesión

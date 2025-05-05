@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '/api';
 
 // Configuración base para las llamadas a la API
 const api = {
@@ -6,13 +6,38 @@ const api = {
   get: async (endpoint) => {
     const token = localStorage.getItem('token');
     try {
+      console.log('Token:', token);
+      console.log('URL:', `${API_BASE_URL}${endpoint}`);
+
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
-      return await response.json();
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        
+        if (response.status === 403) {
+          throw new Error('No tienes permisos para acceder a este recurso');
+        } else if (response.status === 401) {
+          throw new Error('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
+        }
+        
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const text = await response.text();
+      if (!text) return [];
+      
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return [];
+      }
     } catch (error) {
       console.error('Error en GET:', error);
       throw error;
@@ -23,6 +48,10 @@ const api = {
   post: async (endpoint, data) => {
     const token = localStorage.getItem('token');
     try {
+      console.log('Token:', token);
+      console.log('URL:', `${API_BASE_URL}${endpoint}`);
+      console.log('Data:', data);
+
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
         headers: {
@@ -31,7 +60,29 @@ const api = {
         },
         body: JSON.stringify(data)
       });
-      return await response.json();
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        
+        if (response.status === 403) {
+          throw new Error('No tienes permisos para realizar esta acción');
+        } else if (response.status === 401) {
+          throw new Error('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
+        }
+        
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const text = await response.text();
+      if (!text) return null;
+      
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return null;
+      }
     } catch (error) {
       console.error('Error en POST:', error);
       throw error;
@@ -50,7 +101,29 @@ const api = {
         },
         body: JSON.stringify(data)
       });
-      return await response.json();
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        
+        if (response.status === 403) {
+          throw new Error('No tienes permisos para realizar esta acción');
+        } else if (response.status === 401) {
+          throw new Error('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
+        }
+        
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const text = await response.text();
+      if (!text) return null;
+      
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return null;
+      }
     } catch (error) {
       console.error('Error en PUT:', error);
       throw error;
@@ -59,16 +132,37 @@ const api = {
 
   // Método DELETE genérico
   delete: async (endpoint) => {
-    const token = localStorage.getItem('token');
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
+          'Authorization': `Bearer ${token}`
         }
       });
-      return await response.json();
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        
+        if (response.status === 403) {
+          throw new Error('No tienes permisos para realizar esta acción');
+        } else if (response.status === 401) {
+          throw new Error('Tu sesión ha expirado. Por favor, inicia sesión nuevamente');
+        }
+        
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const text = await response.text();
+      if (!text) return true;
+      
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return true;
+      }
     } catch (error) {
       console.error('Error en DELETE:', error);
       throw error;
@@ -76,4 +170,4 @@ const api = {
   }
 };
 
-export default api;
+export default api; 

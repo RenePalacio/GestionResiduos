@@ -3,6 +3,8 @@ package sv.edu.unab.gestionresiduos.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -33,4 +35,17 @@ public class RecyclablePoint extends Auditable{
     @Column(name = "operating_hours", length = 100)
     private String operating_hours;
 
+    @Column(name = "image_url", length = 255)
+    private String imageUrl;
+
+    @Column(name = "description", length = 500)
+    private String description;
+
+    @ManyToMany
+    @JoinTable(
+        name = "point_accepted_materials",
+        joinColumns = @JoinColumn(name = "recyclable_point_id"),
+        inverseJoinColumns = @JoinColumn(name = "recyclable_id")
+    )
+    private Set<Recyclable> acceptedMaterials;
 }
