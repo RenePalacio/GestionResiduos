@@ -669,13 +669,13 @@ const AdminPanel = () => {
               <td>
                 <button
                   onClick={() => handleEdit('recycling', recycling)}
-                  className="btn btn-edit"
+                  className="edit-btn"
                 >
                   Editar
                 </button>
                 <button
                   onClick={() => handleDelete('recycling', recycling.id)}
-                  className="btn btn-delete"
+                  className="delete-btn"
                 >
                   Eliminar
                 </button>
@@ -715,13 +715,13 @@ const AdminPanel = () => {
               <td>
                 <button
                   onClick={() => handleEdit('point', point)}
-                  className="btn btn-edit"
+                  className="edit-btn"
                 >
                   Editar
                 </button>
                 <button
                   onClick={() => handleDelete('point', point.id)}
-                  className="btn btn-delete"
+                  className="delete-btn"
                 >
                   Eliminar
                 </button>
