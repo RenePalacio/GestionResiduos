@@ -18,7 +18,7 @@ const AdminPanel = () => {
   const [editingItem, setEditingItem] = useState(null);
 
   // Estados para los formularios
-  const [userForm, setUserForm] = useState({ name: '', email: '', password: '', phone: '' });
+  const [userForm, setUserForm] = useState({ name: '', email: '', password: '', phone: '', role: '' });
   const [pointForm, setPointForm] = useState({
     name: '',
     phone: '',
@@ -72,6 +72,8 @@ const AdminPanel = () => {
           case 'registros':
             const recyclingsResponse = await recyclingService.getAllRecycling();
             setRecyclings(recyclingsResponse);
+            const recyclingPointsResponse = await pointsService.getAllPoints();
+            setPoints(recyclingPointsResponse);
             break;
         }
         setError(null);
@@ -142,7 +144,7 @@ const AdminPanel = () => {
     setEditingItem(item);
     switch (type) {
       case 'user':
-        setUserForm({ name: item.name, email: item.email, password: '', phone: item.phone });
+        setUserForm({ name: item.name, email: item.email, password: '', phone: item.phone, role: item.role });
         break;
       case 'point':
         setPointForm({
@@ -258,7 +260,7 @@ const AdminPanel = () => {
       }
       setShowForm(false);
       setEditingItem(null);
-      fetchRecyclings();
+      //fetchRecyclings();
     } catch (error) {
       setError('Error al guardar el registro de reciclaje');
       console.error('Error:', error);
@@ -371,6 +373,11 @@ const AdminPanel = () => {
                 onChange={(e) => setUserForm({ ...userForm, phone: e.target.value })}
                 required
               />
+              <select value={userForm.role} onChange={(e) => setUserForm({ ...userForm, role: e.target.value })} required>
+                <option value="">Seleccionar rol</option>
+                <option value="admin">Administrador</option>
+                <option value="user">Usuario</option>
+              </select>
               <div className="button-group">
                 <button type="submit">Guardar</button>
                 <button type="button" onClick={() => { setShowForm(false); setEditingItem(null); resetForms(); }}>
@@ -762,6 +769,7 @@ const AdminPanel = () => {
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Teléfono</th>
+                        <th>Rol</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -772,6 +780,7 @@ const AdminPanel = () => {
                           <td>{user.name}</td>
                           <td>{user.email}</td>
                           <td>{user.phone}</td>
+                          <td>{user.role}</td>
                           <td>
                             <button className="edit-btn" onClick={() => handleEdit('user', user)}>Editar</button>
                             <button className="delete-btn" onClick={() => handleDelete('user', user.id)}>Eliminar</button>

@@ -32,26 +32,35 @@ const Login = ({ setIsAuthenticated }) => {
           password 
         }),
       });
+      console.log('Response:', response); 
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Error al iniciar sesión');
-      }
+        console.log('Error response:', errorData);
+        if (response.status === 403) {
+          throw new Error('Usuario o contraseña incorrectos');
+        } else if (response.status === 401) {
+          throw new Error(errorData.message);
+        }
+      }else{
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('user', JSON.stringify(data));
+        setIsAuthenticated(true);
+        
+        setNotificationMessage('¡Bienvenido! Has iniciado sesión exitosamente');
+        setNotificationType('success');
+        setShowNotification(true);
+        
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
 
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('role', data.role);
-      localStorage.setItem('user', JSON.stringify(data));
-      setIsAuthenticated(true);
+      }
       
-      setNotificationMessage('¡Bienvenido! Has iniciado sesión exitosamente');
-      setNotificationType('success');
-      setShowNotification(true);
-      
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
     } catch (err) {
+      console.error('Error en login:', err);
       setError(err.message === 'Failed to fetch' 
         ? 'Error de conexión con el servidor' 
         : err.message);

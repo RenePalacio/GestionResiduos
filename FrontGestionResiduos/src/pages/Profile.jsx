@@ -10,7 +10,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('/api/users/profile', {
+        const response = await fetch('/api/auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -53,7 +53,7 @@ const Profile = () => {
             <h2>Información Personal</h2>
             <div className="info-item">
               <span className="label">Nombre de Usuario:</span>
-              <span className="value">{userData?.username}</span>
+              <span className="value">{userData?.name}</span>
             </div>
             <div className="info-item">
               <span className="label">Correo Electrónico:</span>
