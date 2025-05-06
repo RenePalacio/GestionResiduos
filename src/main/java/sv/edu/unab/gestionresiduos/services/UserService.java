@@ -47,5 +47,24 @@ public class UserService {
         return modelMapper.map(user, UserDto.class);
     }
 
+    public User updateUser(Long id, User updatedUser) {
+        User existingUser = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    
+        existingUser.setName(updatedUser.getName());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setPhone(updatedUser.getPhone());
+        existingUser.setRole(updatedUser.getRole());
+    
+        // Solo encriptar si cambió la contraseña
+        if (!passwordEncoder.matches(updatedUser.getPassword(), existingUser.getPassword())) {
+            String encryptedPassword = passwordEncoder.encode(updatedUser.getPassword());
+            existingUser.setPassword(encryptedPassword);
+        }
+    
+        return userRepository.save(existingUser);
+    }
+    
+
 
 }

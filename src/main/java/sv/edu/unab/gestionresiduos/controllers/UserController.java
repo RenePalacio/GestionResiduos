@@ -50,7 +50,7 @@ public class UserController {
         User existingUser = userService.findById(id);
         if (existingUser != null) {
             user.setId(id);
-            User updatedUser = userService.save(user);
+            User updatedUser = userService.updateUser(id, user);
             return ResponseEntity.ok(userService.convertToDto(updatedUser));
         } else {
             return ResponseEntity.notFound().build();
