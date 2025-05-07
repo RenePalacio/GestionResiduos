@@ -5,8 +5,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import sv.edu.unab.gestionresiduos.dto.RecyclingDto;
 import sv.edu.unab.gestionresiduos.dto.UserDto;
+import sv.edu.unab.gestionresiduos.models.Recycling;
 import sv.edu.unab.gestionresiduos.models.User;
+import sv.edu.unab.gestionresiduos.services.RecyclingService;
 import sv.edu.unab.gestionresiduos.services.UserService;
 
 import java.util.List;
@@ -18,6 +22,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final RecyclingService recyclingService;
 
     @GetMapping
     @Operation(summary = "Listar todos los usuarios")
@@ -64,6 +69,23 @@ public class UserController {
         if (existingUser != null) {
             userService.delete(id);
             return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{id}/recyclings")
+    @Operation(summary = "Listar reciclajes por ID de usuario")
+    public ResponseEntity<?> getRecyclingsByUserId(@PathVariable Long id) {
+        User user = userService.findById(id);
+        if (user != null) {
+            List<Recycling> recyclings = recyclingService.findRecyclingsByUserId(id);
+            
+            List<RecyclingDto> recyclingDtos = recyclings.stream()
+                    .map(recyclingService::convertToDto)
+                    .toList();
+
+            return ResponseEntity.ok(recyclingDtos);
         } else {
             return ResponseEntity.notFound().build();
         }

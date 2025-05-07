@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import sv.edu.unab.gestionresiduos.dto.RecyclingDto;
 import sv.edu.unab.gestionresiduos.dto.RecyclingRequestDto;
 import sv.edu.unab.gestionresiduos.models.Recycling;
 import sv.edu.unab.gestionresiduos.services.RecyclingService;
@@ -44,10 +47,14 @@ public class RecyclingController {
         return ResponseEntity.ok(recycling.get());
     }
 
-    @GetMapping()
+    @GetMapping
     @Operation(summary = "Listar todos los reciclajes")
     public ResponseEntity<?> getAllRecyclings() {
-        return ResponseEntity.ok(recyclingService.getAllRecyclings());
+
+        List<RecyclingDto> recyclings = recyclingService.getAllRecyclings().stream()
+                .map(reclyng -> recyclingService.convertToDto(reclyng))
+                .toList();
+        return ResponseEntity.ok(recyclings);
     }
     
 }

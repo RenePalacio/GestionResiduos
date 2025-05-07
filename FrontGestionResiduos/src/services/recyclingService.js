@@ -58,7 +58,7 @@ const recyclingService = {
 
   getRecyclingByUser: async (userId) => {
     try {
-      return await api.get(`/recycling/user/${userId}`);
+      return await api.get(`/users/${userId}/recyclings`);
     } catch (error) {
       console.error('Error obteniendo reciclajes del usuario:', error);
       throw error;

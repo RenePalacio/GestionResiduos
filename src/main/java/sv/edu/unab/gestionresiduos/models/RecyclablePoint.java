@@ -3,7 +3,6 @@ package sv.edu.unab.gestionresiduos.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import java.util.List;
 import java.util.Set;
 
 @Data
