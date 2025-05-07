@@ -31,19 +31,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(
-                                        "/v3/api-docs/**",
-                                        "/swagger-ui/**",
-                                        "/swagger-ui.html",
-                                        "/actuator/**"
-                                ).permitAll()
-                        .anyRequest().authenticated()
-                )
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/actuator/**",
+                                "/", // redirección principal
+                                "/index.html", // archivo inicial
+                                "/assets/**", // JS, CSS, imágenes generadas por Vite
+                                "/favicon.ico")
+                        .permitAll()
+                        .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -59,27 +62,29 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-     @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        
+
         // Permitir origenes (ajusta según tu frontend)
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
-        
-        //configuration.addAllowedOriginPattern("*"); 
+        configuration.setAllowedOrigins(
+                List.of("http://localhost:3000", "http://localhost:8080", "http://localhost", "http://dist.test"));
+
+        // configuration.addAllowedOriginPattern("*");
 
         // Métodos HTTP permitidos
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        
+
         // Permitir headers
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Access-Control-Allow-Origin"));
-        
-        // Exponer headers (opcional, si necesitas leer Authorization u otros en el cliente)
+
+        // Exponer headers (opcional, si necesitas leer Authorization u otros en el
+        // cliente)
         configuration.setExposedHeaders(List.of("Authorization"));
-        
+
         // Permitir enviar cookies o credenciales (si usas sesiones)
         configuration.setAllowCredentials(true);
-        
+
         // Registrar la configuración para todas las rutas
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
