@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexController {
-    @GetMapping("/")
-    public String home() {
-        return "redirect:/index.html";
+    @GetMapping(value = {
+        "/{path:^(?!api|v3|swagger-ui|assets|favicon\\.ico|index\\.html|.*\\..*$).*$}",
+        "/**/{path:^(?!api|v3|swagger-ui|assets|favicon\\.ico|index\\.html|.*\\..*$).*$}"
+    })
+    public String redirect() {
+        return "forward:/index.html";
     }
 }
