@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AdminPanel.css';
 import pointsService from '../services/pointsService';
 import recyclableService from '../services/recyclableService';
@@ -16,6 +17,8 @@ const AdminPanel = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+  const navigate = useNavigate();
+
 
   // Estados para los formularios
   const [userForm, setUserForm] = useState({ name: '', email: '', password: '', phone: '', role: '' });
@@ -813,6 +816,7 @@ const AdminPanel = () => {
                           <td>
                             <button className="edit-btn" onClick={() => handleEdit('user', user)}>Editar</button>
                             <button className="delete-btn" onClick={() => handleDelete('user', user.id)}>Eliminar</button>
+                            <button className="edit-btn" onClick={() => navigate(`/admin/user/${user.id}`)}>Ver perfil</button>
                           </td>
                         </tr>
                       ))}

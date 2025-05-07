@@ -17,6 +17,7 @@ import TiposPlasticos from './pages/TiposPlasticos'
 import Las3R from './pages/Las3R'
 import Legislacion from './pages/Legislacion'
 import ScrollToTop from './components/ScrollToTop';
+import UserProfile from './pages/UserProfile'
 import ScrollToTopButton from './components/ScrollToTopButton';
 import './styles/App.css';
 
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/profile" element={<Profile />} />
+            
             <Route path="/centros-acopio" element={<CentrosAcopio />} />
             <Route path="/centros-acopio/:id" element={<CentroAcopioDetalle />} />
             <Route path="/como-reciclar" element={<ComoReciclar />} />
@@ -53,10 +55,12 @@ const App = () => {
             
             {/* Ruta protegida para administración */}
             <Route path="/admin" element={
+              
               <ProtectedRoute>
                 <AdminPanel />
               </ProtectedRoute>
             } />
+            <Route path="/admin/user/:id" element={<UserProfile />} />
 
             {/* Rutas de error */}
             <Route path="/error-500" element={<Error500 />} />
