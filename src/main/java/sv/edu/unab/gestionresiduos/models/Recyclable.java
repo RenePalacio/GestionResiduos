@@ -27,4 +27,10 @@ public class Recyclable extends Auditable{
     @Column(name = "recomendation", length = 255, nullable = true)
     private String recomendation;
 
+    @Column(name = "unit", nullable = true)
+    private String unitOfMeasure;
+
+    @Column(name = "price_per_unit", nullable = true)
+    private Double pricePerUnit;
+
 }

@@ -33,10 +33,4 @@ public class Recycling extends Auditable {
     @JsonManagedReference
     private List<RecyclingDetail> details = new ArrayList<>();
 
-    @Column(name = "unit", nullable = true)
-    private String unitOfMeasure;
-
-    @Column(name = "price_per_unit", nullable = true)
-    private Double pricePerUnit;
-
 }
