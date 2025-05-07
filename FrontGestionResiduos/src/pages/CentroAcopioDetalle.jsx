@@ -1,13 +1,33 @@
 import { useParams, Link } from 'react-router-dom';
 import '../styles/CentroAcopioDetalle.css';
+import Tamarindo from '../assets/images/Tamarindo.jpg';
+import RosaRodriguez from '../assets/images/RosaRodriguez.jpg';
+import Sarmiento from '../assets/images/Sarmiento.jpg';
+import Jefren from '../assets/images/Jefren.jpg';
+import SextaAV from '../assets/images/6taAV.jpg';
 
 const CentroAcopioDetalle = () => {
   const { id } = useParams();
 
+  // Array de imágenes locales
+  const imagenesLocales = [
+    Tamarindo,
+    RosaRodriguez,
+    Sarmiento,
+    Jefren,
+    SextaAV
+  ];
+
+  // Función para obtener una imagen aleatoria
+  const getImagenAleatoria = () => {
+    const indiceAleatorio = Math.floor(Math.random() * imagenesLocales.length);
+    return imagenesLocales[indiceAleatorio];
+  };
+
   const centros = {
     'recitodo': {
       nombre: 'Recitodo',
-      imagen: 'https://i.ibb.co/tw7J8ZKp/Recitodo.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio especializado en reciclaje de diversos materiales.',
       direccion: 'Calle Principal #123, San Salvador',
       telefono: '2222-2222',
@@ -16,7 +36,7 @@ const CentroAcopioDetalle = () => {
     },
     '6ta-avenida': {
       nombre: 'C.A 6ta Avenida',
-      imagen: 'https://i.ibb.co/JWLz1qjB/6taAV.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio ubicado en la 6ta Avenida Norte.',
       direccion: '6ta Avenida Norte #456, San Salvador',
       telefono: '2222-3333',
@@ -25,7 +45,7 @@ const CentroAcopioDetalle = () => {
     },
     'ayala': {
       nombre: 'Ayala',
-      imagen: 'https://i.ibb.co/JWLz1qjB/6taAV.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Ayala, comprometido con el medio ambiente.',
       direccion: 'Calle Ayala #789, San Salvador',
       telefono: '2222-4444',
@@ -34,7 +54,7 @@ const CentroAcopioDetalle = () => {
     },
     'romero': {
       nombre: 'Romero',
-      imagen: 'https://i.ibb.co/Kc6g7X5S/Romero.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Romero, facilitando el reciclaje en la comunidad.',
       direccion: 'Avenida Romero #101, San Salvador',
       telefono: '2222-5555',
@@ -43,7 +63,7 @@ const CentroAcopioDetalle = () => {
     },
     'el-tamarindo': {
       nombre: 'El Tamarindo',
-      imagen: 'https://i.ibb.co/3YzSPwT4/sl1.png',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio El Tamarindo, promoviendo la cultura del reciclaje.',
       direccion: 'Calle El Tamarindo #202, San Salvador',
       telefono: '2222-6666',
@@ -52,7 +72,7 @@ const CentroAcopioDetalle = () => {
     },
     'sarmiento': {
       nombre: 'Sarmiento',
-      imagen: 'https://i.ibb.co/QWjNjwn/Sarmiento.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Sarmiento, contribuyendo al desarrollo sostenible.',
       direccion: 'Avenida Sarmiento #303, San Salvador',
       telefono: '2222-7777',
@@ -61,7 +81,7 @@ const CentroAcopioDetalle = () => {
     },
     'el-catedral': {
       nombre: 'El Catedral',
-      imagen: 'https://i.ibb.co/7JnMPxcj/Catedral.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio El Catedral, ubicado en el centro histórico.',
       direccion: 'Calle Catedral #404, San Salvador',
       telefono: '2222-8888',
@@ -70,7 +90,7 @@ const CentroAcopioDetalle = () => {
     },
     'rosa-rodriguez': {
       nombre: 'Rosa Rodriguez',
-      imagen: 'https://i.ibb.co/rGsRx53y/Rosa-Rodriguez.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Rosa Rodriguez, comprometido con la comunidad.',
       direccion: 'Calle Rosa Rodriguez #505, San Salvador',
       telefono: '2222-9999',
@@ -79,7 +99,7 @@ const CentroAcopioDetalle = () => {
     },
     'planeta-limpio': {
       nombre: 'Planeta Limpio',
-      imagen: 'https://i.ibb.co/PvhC4k42/download.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Planeta Limpio, trabajando por un mundo más verde.',
       direccion: 'Avenida Planeta Limpio #606, San Salvador',
       telefono: '2222-0000',
@@ -88,7 +108,7 @@ const CentroAcopioDetalle = () => {
     },
     'majahual': {
       nombre: 'Majahual',
-      imagen: 'https://i.ibb.co/1tyqtDDq/Majahual.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Majahual, promoviendo el reciclaje en la zona.',
       direccion: 'Calle Majahual #707, San Salvador',
       telefono: '2222-1111',
@@ -97,7 +117,7 @@ const CentroAcopioDetalle = () => {
     },
     'lese': {
       nombre: 'LESE',
-      imagen: 'https://i.ibb.co/JWxtQ8M2/LESE.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio LESE, especializado en materiales reciclables.',
       direccion: 'Avenida LESE #808, San Salvador',
       telefono: '2222-2222',
@@ -106,7 +126,7 @@ const CentroAcopioDetalle = () => {
     },
     'la-esperanza': {
       nombre: 'La Esperanza',
-      imagen: 'https://i.ibb.co/XZqk86Zg/La-Esperanza.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio La Esperanza, trabajando por un futuro mejor.',
       direccion: 'Calle La Esperanza #909, San Salvador',
       telefono: '2222-3333',
@@ -115,7 +135,7 @@ const CentroAcopioDetalle = () => {
     },
     'jefren': {
       nombre: 'Jefren',
-      imagen: 'https://i.ibb.co/s9jSVtt5/Jefren.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Jefren, facilitando el reciclaje en la comunidad.',
       direccion: 'Avenida Jefren #1010, San Salvador',
       telefono: '2222-4444',
@@ -124,7 +144,7 @@ const CentroAcopioDetalle = () => {
     },
     'incodesa': {
       nombre: 'INCODESA',
-      imagen: 'https://i.ibb.co/9mvZsYHd/INCODESA.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio INCODESA, comprometido con el medio ambiente.',
       direccion: 'Calle INCODESA #1111, San Salvador',
       telefono: '2222-5555',
@@ -133,7 +153,7 @@ const CentroAcopioDetalle = () => {
     },
     'servicios-y-reciclajes': {
       nombre: 'Servicios y Reciclajes',
-      imagen: 'https://i.ibb.co/tTHgKJ9D/Servicios-YRecicla.jpg',
+      imagen: getImagenAleatoria(),
       descripcion: 'Centro de acopio Servicios y Reciclajes, ofreciendo soluciones integrales.',
       direccion: 'Avenida Servicios #1212, San Salvador',
       telefono: '2222-6666',

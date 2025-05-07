@@ -336,6 +336,38 @@ const AdminPanel = () => {
     }
   }, [error]);
 
+  // Función para actualizar datos
+  const handleRefresh = async () => {
+    try {
+      setLoading(true);
+      switch (activeSection) {
+        case 'usuarios':
+          const usersResponse = await api.get('/users');
+          if (Array.isArray(usersResponse)) {
+            setUsers(usersResponse);
+          }
+          break;
+        case 'puntos':
+          const pointsResponse = await pointsService.getAllPoints();
+          setPoints(pointsResponse);
+          break;
+        case 'materiales':
+          const materialsResponse = await recyclableService.getAllRecyclables();
+          setMaterials(materialsResponse);
+          break;
+        case 'registros':
+          const recyclingsResponse = await recyclingService.getAllRecycling();
+          setRecyclings(recyclingsResponse);
+          break;
+      }
+      setSuccessMessage('Datos actualizados exitosamente');
+    } catch (err) {
+      setError('Error al actualizar los datos');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const renderForm = () => {
     if (!showForm) return null;
 
@@ -675,12 +707,6 @@ const AdminPanel = () => {
               </td>
               <td>
                 <button
-                  onClick={() => handleEdit('recycling', recycling)}
-                  className="edit-btn"
-                >
-                  Editar
-                </button>
-                <button
                   onClick={() => handleDelete('recycling', recycling.id)}
                   className="delete-btn"
                 >
@@ -760,7 +786,10 @@ const AdminPanel = () => {
             {activeSection === 'usuarios' && (
               <section>
                 <h2>Gestión de Usuarios</h2>
-                <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Usuario</button>
+                <div className="button-group">
+                  <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Usuario</button>
+                  <button className="refresh-btn" onClick={handleRefresh}>Actualizar</button>
+                </div>
                 <div className="admin-table-wrapper">
                   <table className="admin-table">
                     <thead>
@@ -795,14 +824,20 @@ const AdminPanel = () => {
             {activeSection === 'puntos' && (
               <section>
                 <h2>Puntos de Reciclaje</h2>
-                <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Punto</button>
+                <div className="button-group">
+                  <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Punto</button>
+                  <button className="refresh-btn" onClick={handleRefresh}>Actualizar</button>
+                </div>
                 {renderPointsTable()}
               </section>
             )}
             {activeSection === 'materiales' && (
               <section>
                 <h2>Materiales Reciclables</h2>
-                <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Material</button>
+                <div className="button-group">
+                  <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Material</button>
+                  <button className="refresh-btn" onClick={handleRefresh}>Actualizar</button>
+                </div>
                 <div className="admin-table-wrapper">
                   <table className="admin-table">
                     <thead>
@@ -837,7 +872,10 @@ const AdminPanel = () => {
             {activeSection === 'registros' && (
               <section>
                 <h2>Registros de Reciclaje</h2>
-                <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Registro</button>
+                <div className="button-group">
+                  <button className="add-btn" onClick={() => setShowForm(true)}>Agregar Registro</button>
+                  <button className="refresh-btn" onClick={handleRefresh}>Actualizar</button>
+                </div>
                 {renderRecyclingTable()}
               </section>
             )}
