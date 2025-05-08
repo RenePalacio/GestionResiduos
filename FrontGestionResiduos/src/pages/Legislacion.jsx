@@ -1,5 +1,8 @@
 import React from 'react';
 import '../styles/Legislacion.css';
+import leyGeneralAmbiente from '../assets/pdf/Ley General del Ambiente.pdf';
+import leyGestionResiduos from '../assets/pdf/Ley de Gestión Integral de Residuos Sólidos.pdf';
+import leyReciclaje from '../assets/pdf/Ley de Reciclaje y Responsabilidad Extendida del Productor.pdf';
 
 const Legislacion = () => {
   const leyesAmbientales = [
@@ -8,23 +11,32 @@ const Legislacion = () => {
       titulo: "Ley General del Ambiente",
       descripcion: "Establece los principios y normas básicas para la protección del ambiente y el desarrollo sostenible.",
       fecha: "2005",
-      articulos: ["Art. 1: Objeto de la ley", "Art. 2: Principios", "Art. 3: Definiciones"]
+      pdf: leyGeneralAmbiente
     },
     {
       id: 2,
       titulo: "Ley de Gestión Integral de Residuos Sólidos",
       descripcion: "Regula la gestión integral de los residuos sólidos, promoviendo la reducción, reutilización y reciclaje.",
       fecha: "2010",
-      articulos: ["Art. 1: Objeto", "Art. 2: Ámbito de aplicación", "Art. 3: Definiciones"]
+      pdf: leyGestionResiduos
     },
     {
       id: 3,
       titulo: "Ley de Reciclaje y Responsabilidad Extendida del Productor",
       descripcion: "Establece el marco para la gestión de residuos y la responsabilidad de los productores.",
       fecha: "2016",
-      articulos: ["Art. 1: Objeto", "Art. 2: Definiciones", "Art. 3: Obligaciones"]
+      pdf: leyReciclaje
     }
   ];
+
+  const handleDescargarPDF = (pdfUrl, titulo) => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = `${titulo}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="legislacion-container">
@@ -43,20 +55,15 @@ const Legislacion = () => {
             
             <div className="ley-content">
               <p>{ley.descripcion}</p>
-              
-              <div className="ley-articulos">
-                <h3>Artículos Relevantes:</h3>
-                <ul>
-                  {ley.articulos.map((articulo, index) => (
-                    <li key={index}>{articulo}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
             <div className="ley-actions">
-              <button className="descargar-btn">Descargar PDF</button>
-              <button className="compartir-btn">Compartir</button>
+              <button 
+                className="descargar-btn"
+                onClick={() => handleDescargarPDF(ley.pdf, ley.titulo)}
+              >
+                Descargar PDF
+              </button>
             </div>
           </div>
         ))}
