@@ -17,7 +17,7 @@ const UserProfile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`/api/users/${id}`, {
+        const response = await fetch(`https://c43nt8lpv8.execute-api.us-east-1.amazonaws.com/prd/api/users/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

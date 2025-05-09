@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://c43nt8lpv8.execute-api.us-east-1.amazonaws.com/prd/api';
 
 // Configuración base para las llamadas a la API
 const api = {

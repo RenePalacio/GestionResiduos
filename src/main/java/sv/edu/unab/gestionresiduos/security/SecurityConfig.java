@@ -68,7 +68,7 @@ public class SecurityConfig {
 
         // Permitir origenes (ajusta según tu frontend)
         configuration.setAllowedOrigins(
-                List.of("http://localhost:3000", "http://localhost:8080", "http://localhost", "http://dist.test"));
+                List.of("http://localhost:3000", "http://localhost:8080", "http://localhost", "http://dist.test","http://d1gl55fwdhylze.cloudfront.net","https://d1gl55fwdhylze.cloudfront.net"));
 
         // configuration.addAllowedOriginPattern("*");
 

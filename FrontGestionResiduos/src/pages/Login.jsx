@@ -22,7 +22,7 @@ const Login = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch('https://c43nt8lpv8.execute-api.us-east-1.amazonaws.com/prd/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
