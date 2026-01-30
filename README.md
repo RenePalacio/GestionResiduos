@@ -17,7 +17,7 @@ El sistema cuenta con **backend en Java con Spring Boot**, **API REST**, autenti
   
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 ### Backend
 - Java  
@@ -45,7 +45,7 @@ El sistema cuenta con **backend en Java con Spring Boot**, **API REST**, autenti
 
 ---
 
-## 🧱 Arquitectura
+## Arquitectura
 
 El proyecto sigue una **arquitectura cliente-servidor**:
 
@@ -55,7 +55,7 @@ El proyecto sigue una **arquitectura cliente-servidor**:
 
 ---
 
-## ⚙️ Ejecución del proyecto
+## Ejecución del proyecto
 
 ### Requisitos
 - Java 17 o superior  
